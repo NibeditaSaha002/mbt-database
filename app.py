@@ -40,9 +40,7 @@ def submit():
     identity = data.get('identity')
     status = data.get('status')
     fingerprint = data.get('fingerprint')
-
-    # Create a new User instance
-     new_user = Register(
+    new_user = Register(
         asid=asid,
         name=name,
         phone_number=phone_number,
