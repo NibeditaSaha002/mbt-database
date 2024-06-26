@@ -31,7 +31,6 @@ with app.app_context():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    print("hieeeeeeeeeeeeeBackend")
     data = request.json
     asid = data.get('asid')
     name = data.get('name')
