@@ -15,11 +15,15 @@ db = SQLAlchemy(app)
 # Define a User model
 class Register(db.Model):
     __tablename__ = 'register'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(80), nullable=False)
-    email = Column(String(120), unique=True, nullable=False)
-    number=Column(String(80), nullable=False)
-    dob = Column(String(15), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    asid = db.Column(db.String, unique=True, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    phone_number = db.Column(db.String, nullable=False)
+    token = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+    identity = db.Column(JSONB, nullable=False)
+    status = db.Column(db.String, nullable=False)
+    fingerprint = db.Column(JSONB, nullable=False)
 
 # Create the database and tables
 with app.app_context():
@@ -29,14 +33,26 @@ with app.app_context():
 def submit():
     print("hieeeeeeeeeeeeeBackend")
     data = request.json
-    print("Request data:", data)
+    asid = data.get('asid')
     name = data.get('name')
+    phone_number = data.get('phoneNumber')
+    token = data.get('token')
     email = data.get('email')
-    number=data.get('number')
-    dob = data.get('dob')
+    identity = data.get('identity')
+    status = data.get('status')
+    fingerprint = data.get('fingerprint')
 
     # Create a new User instance
-    new_user = Register(name=name, email=email, number=number, dob=dob)
+     new_user = Register(
+        asid=asid,
+        name=name,
+        phone_number=phone_number,
+        token=token,
+        email=email,
+        identity=identity,
+        status=status,
+        fingerprint=fingerprint
+    )
 
     # Add the new user to the session and commit to the database
     db.session.add(new_user)
