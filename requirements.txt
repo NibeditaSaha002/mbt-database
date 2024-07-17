@@ -56,3 +56,4 @@ urllib3==2.2.1
 virtualenv==20.25.1
 Werkzeug==3.0.2
 wsproto==1.2.0
+gunicorn==20.0.4
