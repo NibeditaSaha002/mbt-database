@@ -12,7 +12,7 @@ import razorpay
 app = Flask(__name__)
 db = SQLAlchemy(app)
 CORS(app)
-
+ 
 # Configuring the PostgreSQL database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mbt_my_database_user:00xpUJcMgBTtkE4WUtLxqOZoz8mEQ4Oe@dpg-cpsk3j2j1k6c738otorg-a.oregon-postgres.render.com/mbt_my_database'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
